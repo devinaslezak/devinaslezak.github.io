@@ -675,11 +675,9 @@ footer {
   justify-self: start;
 }
 
-.nav-links {
-  justify-self: center;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+.nav-links a {
+  flex: 1;
+  text-align: center;
 }
 
 .nav-toggle {
