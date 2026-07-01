@@ -103,3 +103,46 @@ if (revealItems.length > 0) {
 
 updateScrollProgress();
 updateBackToTop();
+
+const lightbox = document.querySelector("#imageLightbox");
+const lightboxImage = document.querySelector("#lightboxImage");
+const lightboxClose = document.querySelector("#lightboxClose");
+
+const clickableImages = document.querySelectorAll(".project-visuals img, .intro-image img");
+
+clickableImages.forEach(function (image) {
+  image.addEventListener("click", function () {
+    if (!lightbox || !lightboxImage) return;
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.classList.add("visible");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeLightbox() {
+  if (!lightbox || !lightboxImage) return;
+
+  lightbox.classList.remove("visible");
+  lightboxImage.src = "";
+  document.body.style.overflow = "";
+}
+
+if (lightboxClose) {
+  lightboxClose.addEventListener("click", closeLightbox);
+}
+
+if (lightbox) {
+  lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+}
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
