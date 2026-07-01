@@ -108,7 +108,21 @@ const lightbox = document.querySelector("#imageLightbox");
 const lightboxImage = document.querySelector("#lightboxImage");
 const lightboxClose = document.querySelector("#lightboxClose");
 
-const clickableImages = document.querySelectorAll(".project-visuals img, .intro-image img");
+const expandButtons = document.querySelectorAll(".expand-image-btn");
+
+expandButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const card = button.closest(".image-expand-card");
+    const image = card.querySelector("img");
+
+    if (!lightbox || !lightboxImage || !image) return;
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.classList.add("visible");
+    document.body.style.overflow = "hidden";
+  });
+});
 
 clickableImages.forEach(function (image) {
   image.addEventListener("click", function () {
