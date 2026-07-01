@@ -48,7 +48,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px max(8%, 24px);
+  padding: 24px max(8%, 24px);
   background: rgba(44, 53, 49, 0.86);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
@@ -56,8 +56,9 @@ nav {
 
 nav h1 {
   margin: 0;
-  font-size: 20px;
-  letter-spacing: -0.03em;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  font-weight: 800;
 }
 
 nav div {
@@ -70,8 +71,8 @@ nav a {
   position: relative;
   color: var(--muted);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
