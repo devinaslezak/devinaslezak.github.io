@@ -1,3 +1,5 @@
+console.log("app.js is running");
+
 const progressBar = document.querySelector(".scroll-progress-bar");
 const scrollProgress = document.querySelector(".scroll-progress");
 
@@ -7,18 +9,28 @@ const navbar = document.querySelector("#navbar");
 const navToggle = document.querySelector("#navToggle");
 const navShow = document.querySelector("#navShow");
 
+console.log({
+  progressBar,
+  scrollProgress,
+  backToTop,
+  navbar,
+  navToggle,
+  navShow
+});
+
 function updateScrollProgress() {
   if (!progressBar) return;
 
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-  const documentHeight =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+  const scrollTop = window.scrollY;
+  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  const scrollPercent =
-    documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0;
+  if (documentHeight <= 0) {
+    progressBar.style.width = "0%";
+    return;
+  }
 
-  progressBar.style.width = `${scrollPercent}%`;
+  const scrollPercent = (scrollTop / documentHeight) * 100;
+  progressBar.style.width = scrollPercent + "%";
 }
 
 function updateBackToTop() {
@@ -31,16 +43,35 @@ function updateBackToTop() {
   }
 }
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function () {
   updateScrollProgress();
   updateBackToTop();
 });
 
 window.addEventListener("resize", updateScrollProgress);
-window.addEventListener("load", updateScrollProgress);
+
+if (navToggle && navbar && navShow && scrollProgress) {
+  navToggle.addEventListener("click", function () {
+    console.log("hide nav clicked");
+
+    navbar.classList.add("hidden");
+    navShow.classList.add("visible");
+    scrollProgress.classList.add("nav-hidden");
+  });
+}
+
+if (navShow && navbar && navToggle && scrollProgress) {
+  navShow.addEventListener("click", function () {
+    console.log("show nav clicked");
+
+    navbar.classList.remove("hidden");
+    navShow.classList.remove("visible");
+    scrollProgress.classList.remove("nav-hidden");
+  });
+}
 
 if (backToTop) {
-  backToTop.addEventListener("click", () => {
+  backToTop.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
@@ -48,36 +79,27 @@ if (backToTop) {
   });
 }
 
-if (navbar && navToggle && navShow && scrollProgress) {
-  navToggle.addEventListener("click", () => {
-    navbar.classList.add("hidden");
-    navShow.classList.add("visible");
-    scrollProgress.classList.add("nav-hidden");
-  });
+const revealItems = document.querySelectorAll(".reveal-from-right");
 
-  navShow.addEventListener("click", () => {
-    navbar.classList.remove("hidden");
-    navShow.classList.remove("visible");
-    scrollProgress.classList.remove("nav-hidden");
+if (revealItems.length > 0) {
+  const revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -60px 0px"
+    }
+  );
+
+  revealItems.forEach(function (item) {
+    revealObserver.observe(item);
   });
 }
 
-const revealItems = document.querySelectorAll(".reveal-from-right");
-
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
-  {
-    threshold: 0.15,
-    rootMargin: "0px 0px -60px 0px"
-  }
-);
-
-revealItems.forEach(item => {
-  revealObserver.observe(item);
-});
+updateScrollProgress();
+updateBackToTop();
