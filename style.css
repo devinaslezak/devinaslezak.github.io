@@ -51,10 +51,76 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
   padding: 24px max(8%, 24px);
   background: rgba(8, 8, 18, 0.88);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+nav.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav-toggle,
+.nav-show {
+  border: 1px solid rgba(155, 124, 255, 0.55);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9B7CFF, #5B2EFF, #0D1B44);
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow:
+    0 0 18px rgba(155, 124, 255, 0.45),
+    0 0 34px rgba(91, 46, 255, 0.3),
+    0 18px 45px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.nav-toggle {
+  width: 36px;
+  height: 36px;
+}
+
+.nav-show {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 120;
+  width: 44px;
+  height: 44px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.nav-show.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-toggle:hover,
+.nav-show:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow:
+    0 0 24px rgba(155, 124, 255, 0.75),
+    0 0 48px rgba(91, 46, 255, 0.55),
+    0 0 70px rgba(13, 27, 68, 0.45),
+    0 22px 55px rgba(0, 0, 0, 0.55);
 }
 
 nav h1 {
@@ -579,6 +645,11 @@ footer {
   width: 100%;
   height: 4px;
   background: rgba(232, 230, 243, 0.08);
+  transition: top 0.3s ease;
+}
+
+.scroll-progress.nav-hidden {
+  top: 0;
 }
 
 .scroll-progress-bar {
@@ -586,11 +657,9 @@ footer {
   height: 100%;
   background: linear-gradient(
     90deg,
-    #0D1B44,
-    var(--accent),
-    var(--accent-bright),
-    var(--accent-light)
+    #9B7CFF,
+    #5B2EFF,
+    #0D1B44
   );
   box-shadow: 0 0 16px rgba(91, 46, 255, 0.75);
-  transition: width 0.08s linear;
 }
