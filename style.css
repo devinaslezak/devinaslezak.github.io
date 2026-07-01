@@ -493,20 +493,23 @@ footer {
   }
 
   .project-visuals {
+    max-width: 100%;
+    justify-self: stretch;
     order: -1;
   }
 
   .project-visuals img,
-  .single-image img,
-  .three-images img {
-    height: 240px;
+  .project-visuals.single-image img,
+  .project-visuals.three-images img {
+    height: 230px;
   }
 
-  .three-images {
+  .project-visuals.three-images {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 
   .reveal-from-right {
-    transform: translateX(50px);
+    transform: translateX(55px);
   }
 }
