@@ -18,3 +18,15 @@ if (backToTop) {
     });
   });
 }
+
+const progressBar = document.querySelector(".scroll-progress-bar");
+
+window.addEventListener("scroll", () => {
+  if (!progressBar) return;
+
+  const scrollTop = window.scrollY;
+  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / documentHeight) * 100;
+
+  progressBar.style.width = `${scrollPercent}%`;
+});
