@@ -1,3 +1,15 @@
+const progressBar = document.querySelector(".scroll-progress-bar");
+
+window.addEventListener("scroll", () => {
+  if (!progressBar) return;
+
+  const scrollTop = window.scrollY;
+  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / documentHeight) * 100;
+
+  progressBar.style.width = `${scrollPercent}%`;
+});
+
 const backToTop = document.querySelector(".back-to-top");
 
 window.addEventListener("scroll", () => {
@@ -19,14 +31,21 @@ if (backToTop) {
   });
 }
 
-const progressBar = document.querySelector(".scroll-progress-bar");
+const revealItems = document.querySelectorAll(".reveal-from-right");
 
-window.addEventListener("scroll", () => {
-  if (!progressBar) return;
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  {
+    threshold: 0.25
+  }
+);
 
-  const scrollTop = window.scrollY;
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / documentHeight) * 100;
-
-  progressBar.style.width = `${scrollPercent}%`;
+revealItems.forEach(item => {
+  revealObserver.observe(item);
 });
