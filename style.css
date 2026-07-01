@@ -275,13 +275,61 @@ section h2 {
   z-index: 2;
 }
 
+.project-visuals {
+  width: 100%;
+  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-self: end;
+}
 
+/* This forces every image container to the same clean size */
+.project-visuals img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 22px;
+  border: 1px solid rgba(209, 232, 226, 0.18);
+  background: #0f1f1f;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.project-visuals img:hover {
+  transform: translateY(-4px) scale(1.01);
+  filter: brightness(1.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* Single image projects still stay controlled */
+.project-visuals.single-image img {
+  height: 300px;
+}
+
+/* Three-image projects become a clean row, all equal size */
+.project-visuals.three-images {
+  max-width: 620px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.project-visuals.three-images img {
+  height: 240px;
+}
+
+/* Reveal animation */
 .reveal-from-right {
   opacity: 0;
-  transform: translateX(110px);
+  transform: translateX(120px);
   transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s ease,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 .reveal-from-right.visible {
@@ -370,9 +418,10 @@ footer {
   .project-card,
   .project-row {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1fr);
-  gap: 42px;
+  grid-template-columns: minmax(0, 620px) minmax(340px, 520px);
+  gap: 40px;
   align-items: center;
+  justify-content: space-between;
   margin: 34px 0 72px;
 }
 
@@ -399,27 +448,6 @@ footer {
   color: #ffd6b4;
 }
 
-.project-visuals {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  justify-content: center;
-}
-
-.project-visuals img {
-  width: 100%;
-  height: 250px;
-  display: block;
-  object-fit: cover;
-  border-radius: 24px;
-  border: 1px solid rgba(209, 232, 226, 0.18);
-  background: #0f1f1f;
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
-}
 
 .project-visuals img:hover {
   transform: translateY(-4px) scale(1.01);
@@ -427,19 +455,7 @@ footer {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
-.single-image img {
-  height: 430px;
-}
 
-.three-images {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.three-images img {
-  height: 330px;
-}
   #resume,
   #contact {
     padding: 22px;
