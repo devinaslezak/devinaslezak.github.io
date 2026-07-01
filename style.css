@@ -1,15 +1,15 @@
 :root {
-  --bg: #f6f4f0;
-  --surface: #ffffff;
-  --surface-soft: #ebe7df;
-  --text: #151515;
-  --muted: #6d6860;
-  --line: #ddd7ce;
-  --accent: #315cfd;
-  --accent-soft: rgba(49, 92, 253, 0.11);
+  --bg: #0b1020;
+  --surface: #111827;
+  --surface-soft: #1f2937;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --line: rgba(148, 163, 184, 0.22);
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.12);
   --radius-lg: 28px;
   --radius-md: 18px;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -26,8 +26,8 @@ body {
   color: var(--text);
   line-height: 1.6;
   background:
-    radial-gradient(circle at top left, rgba(49, 92, 253, 0.12), transparent 32%),
-    radial-gradient(circle at top right, rgba(0, 0, 0, 0.05), transparent 28%),
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.13), transparent 32%),
+    radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 28%),
     var(--bg);
 }
 
@@ -44,7 +44,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px max(8%, 24px);
-  background: rgba(246, 244, 240, 0.82);
+  background: rgba(11, 16, 32, 0.82);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
@@ -177,7 +177,7 @@ section h2 {
 
 .project-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(17, 24, 39, 0.78);
   padding: 28px;
   margin: 22px 0;
   border-radius: var(--radius-lg);
@@ -230,7 +230,7 @@ section h2 {
 #contact {
   max-width: 760px;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(17, 24, 39, 0.78);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
@@ -244,7 +244,7 @@ section h2 {
 footer {
   text-align: center;
   padding: 28px max(8%, 24px);
-  background: transparent;
+  background: #080c18;
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
