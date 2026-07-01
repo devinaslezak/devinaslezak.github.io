@@ -1,12 +1,17 @@
 :root {
-  --bg: #0b1020;
-  --surface: #111827;
-  --surface-soft: #1f2937;
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --line: rgba(148, 163, 184, 0.22);
-  --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.12);
+  --bg: #2C3531;
+  --surface: #162c2c;
+  --surface-soft: #203f3e;
+  --text: #D1E8E2;
+  --muted: #a8c7c0;
+  --line: rgba(209, 232, 226, 0.18);
+
+  --accent: #116466;
+  --accent-bright: #1fa6a8;
+  --accent-warm: #D9B08C;
+  --accent-light: #FFCB9A;
+  --accent-soft: rgba(17, 100, 102, 0.35);
+
   --radius-lg: 28px;
   --radius-md: 18px;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
@@ -26,8 +31,8 @@ body {
   color: var(--text);
   line-height: 1.6;
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.13), transparent 32%),
-    radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 28%),
+    radial-gradient(circle at top left, rgba(17, 100, 102, 0.55), transparent 30%),
+    radial-gradient(circle at top right, rgba(217, 176, 140, 0.15), transparent 28%),
     var(--bg);
 }
 
@@ -62,16 +67,36 @@ nav div {
 }
 
 nav a {
+  position: relative;
   color: var(--muted);
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-light);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
 }
 
 nav a:hover {
-  color: var(--text);
+  color: var(--accent-light);
+  transform: translateY(-2px);
 }
 
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 .hero {
   background: transparent;
   color: var(--text);
@@ -118,20 +143,26 @@ nav a:hover {
   justify-content: center;
   min-height: 46px;
   margin-top: 28px;
-  padding: 0 18px;
-  background: var(--text);
-  color: white;
+  padding: 0 20px;
+  background: var(--accent-light);
+  color: #2C3531;
   text-decoration: none;
   border-radius: 999px;
   font-weight: 800;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+  transform: translateY(-3px);
+  background: var(--accent-warm);
+  color: #2C3531;
+  box-shadow: 0 14px 32px rgba(255, 203, 154, 0.22);
 }
-
 main {
   padding: 24px max(8%, 24px) 40px;
 }
