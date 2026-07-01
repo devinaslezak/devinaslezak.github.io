@@ -34,17 +34,16 @@ if (backToTop) {
 const revealItems = document.querySelectorAll(".reveal-from-right");
 
 const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
+  entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
       }
     });
   },
   {
     threshold: 0.15,
-    rootMargin: "0px 0px -80px 0px"
+    rootMargin: "0px 0px -60px 0px"
   }
 );
 
