@@ -155,7 +155,7 @@ nav a::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 15px;
   width: 70%;
   height: 3px;
   background: linear-gradient(90deg, #9B7CFF, #5B2EFF, #0D1B44);
