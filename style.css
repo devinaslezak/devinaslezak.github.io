@@ -403,7 +403,7 @@ section h2 {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
 }
 
-.project-visuals.single-image img {
+.project-visuals.single-image .image-expand-card img {
   height: 330px;
 }
 
@@ -449,8 +449,14 @@ section h2 {
   }
 
   .project-visuals.three-images {
-    grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   }
+
+  .project-visuals.three-images .image-expand-card img {
+  height: 245px;
+}
+  
 }
 
 #resume,
@@ -779,4 +785,84 @@ footer {
 .lightbox-close:hover {
   filter: brightness(1.15);
   transform: translateY(-2px);
+}
+
+.image-expand-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.image-expand-card img {
+  width: 100%;
+  height: 245px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  border: 1px solid rgba(232, 230, 243, 0.18);
+  background: #0B0B16;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.image-expand-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 124, 255, 0.55),
+    rgba(91, 46, 255, 0.45),
+    rgba(13, 27, 68, 0.65)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.image-expand-card:hover img {
+  filter: blur(4px) brightness(0.7);
+  transform: scale(1.05);
+}
+
+.image-expand-card:hover::after {
+  opacity: 1;
+}
+
+.expand-image-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -40%);
+  opacity: 0;
+  pointer-events: none;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(232, 230, 243, 0.28);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9B7CFF, #5B2EFF, #0D1B44);
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow:
+    0 0 18px rgba(155, 124, 255, 0.55),
+    0 18px 45px rgba(0, 0, 0, 0.45);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.image-expand-card:hover .expand-image-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.expand-image-btn:hover {
+  filter: brightness(1.15);
 }
