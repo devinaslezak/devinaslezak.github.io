@@ -1,94 +1,309 @@
+:root {
+  --bg: #f6f4f0;
+  --surface: #ffffff;
+  --surface-soft: #ebe7df;
+  --text: #151515;
+  --muted: #6d6860;
+  --line: #ddd7ce;
+  --accent: #315cfd;
+  --accent-soft: rgba(49, 92, 253, 0.11);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  color: var(--text);
   line-height: 1.6;
-  color: #1f2937;
-  background: #f9fafb;
+  background:
+    radial-gradient(circle at top left, rgba(49, 92, 253, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(0, 0, 0, 0.05), transparent 28%),
+    var(--bg);
+}
+
+a {
+  color: inherit;
 }
 
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 76px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 8%;
-  background: #111827;
-  color: white;
+  padding: 20px max(8%, 24px);
+  background: rgba(246, 244, 240, 0.82);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
 }
 
 nav h1 {
   margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+nav div {
+  display: flex;
+  gap: 18px;
+  align-items: center;
 }
 
 nav a {
-  color: white;
+  color: var(--muted);
   text-decoration: none;
-  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: var(--text);
 }
 
 .hero {
-  background: #111827;
-  color: white;
+  background: transparent;
+  color: var(--text);
 }
 
 .intro {
-  padding: 80px 8%;
-  max-width: 800px;
+  padding: 92px max(8%, 24px) 72px;
+  max-width: 1000px;
+}
+
+.intro::before {
+  content: "Aerospace Engineering · Manufacturing · UAVs";
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .intro h2 {
-  font-size: 48px;
-  margin-bottom: 16px;
+  max-width: 850px;
+  margin: 0 0 18px;
+  font-size: clamp(46px, 7vw, 82px);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
 }
 
 .intro p {
+  max-width: 760px;
+  margin: 0;
   font-size: 20px;
+  color: var(--muted);
 }
 
 .button {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 12px 20px;
-  background: #2563eb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 28px;
+  padding: 0 18px;
+  background: var(--text);
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
 }
 
 main {
-  padding: 40px 8%;
+  padding: 24px max(8%, 24px) 40px;
 }
 
 section {
-  margin-bottom: 64px;
+  margin-bottom: 76px;
+}
+
+section h2 {
+  margin: 0 0 24px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+#projects {
+  max-width: 1180px;
+}
+
+#projects > h2::before,
+#resume > h2::before,
+#contact > h2::before {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#projects > h2::before {
+  content: "Projects";
+}
+
+#resume > h2::before {
+  content: "Resume";
+}
+
+#contact > h2::before {
+  content: "Contact";
 }
 
 .project-card {
-  background: white;
-  padding: 24px;
-  margin: 20px 0;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  position: relative;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 28px;
+  margin: 22px 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: var(--accent);
+  opacity: 0.9;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(49, 92, 253, 0.32);
+  box-shadow: 0 30px 85px rgba(0, 0, 0, 0.11);
 }
 
 .project-card h3 {
-  margin-top: 0;
+  margin: 0 0 12px;
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.project-card p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.project-card strong {
+  color: var(--text);
+}
+
+.project-card p:last-child {
+  margin-bottom: 0;
+}
+
+.project-card p:last-child strong {
+  color: var(--accent);
+}
+
+#resume,
+#contact {
+  max-width: 760px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+#contact a {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 footer {
   text-align: center;
-  padding: 24px;
-  background: #111827;
-  color: white;
+  padding: 28px max(8%, 24px);
+  background: transparent;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
 }
 
-.project-card p {
-  margin-bottom: 14px;
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.2s ease;
 }
 
-.project-card strong {
-  color: #111827;
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav div {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .intro {
+    padding-top: 62px;
+  }
+
+  .intro h2 {
+    font-size: 44px;
+  }
+
+  .intro p {
+    font-size: 18px;
+  }
+
+  main {
+    padding-top: 10px;
+  }
+
+  .project-card,
+  #resume,
+  #contact {
+    padding: 22px;
+    border-radius: 22px;
+  }
 }
