@@ -191,9 +191,6 @@ section h2 {
   letter-spacing: -0.04em;
 }
 
-#projects {
-  max-width: 1180px;
-}
 
 #projects > h2::before,
 #resume > h2::before,
@@ -219,15 +216,30 @@ section h2 {
   content: "Contact";
 }
 
+#projects {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) minmax(360px, 520px);
+  gap: 48px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 36px 0 90px;
+}
+
 .project-card {
   position: relative;
-  background: rgba(10, 40, 40, 0.78);
-  padding: 34px;
-  border-radius: 28px;
-  border: 1px solid rgba(209, 232, 226, 0.18);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  background: rgba(10, 40, 40, 0.82);
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(209, 232, 226, 0.22);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   overflow: hidden;
-  min-height: 100%;
 }
 
 .project-card::before {
@@ -236,18 +248,12 @@ section h2 {
   inset: 0 auto 0 0;
   width: 5px;
   background: linear-gradient(180deg, #ffcb9a, #1fa6a8, #116466);
-  opacity: 0.95;
-}
-
-.project-card:hover {
-  border-color: rgba(255, 203, 154, 0.38);
-  box-shadow: 0 30px 85px rgba(0, 0, 0, 0.42);
 }
 
 .project-card h3 {
   color: #f4fbf8;
   margin: 0 0 12px;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 1.15;
   letter-spacing: -0.03em;
 }
@@ -255,44 +261,29 @@ section h2 {
 .project-card p {
   color: #d3e5df;
   margin: 0 0 14px;
+  font-size: 15px;
 }
 
 .project-card strong {
-  color: #ffd6b4;
-}
-
-.project-card p:last-child {
-  margin-bottom: 0;
-}
-
-.project-card p:last-child strong {
-  color: var(--accent);
-}
-
-
-.project-content {
-  position: relative;
-  z-index: 2;
+  color: #ffcb9a;
 }
 
 .project-visuals {
-  width: 100%;
-  max-width: 520px;
+  width: 520px;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  justify-self: end;
 }
 
-/* This forces every image container to the same clean size */
 .project-visuals img {
   width: 100%;
-  height: 220px;
+  height: 245px;
   display: block;
   object-fit: cover;
   object-position: center;
-  border-radius: 22px;
-  border: 1px solid rgba(209, 232, 226, 0.18);
+  border-radius: 18px;
+  border: 1px solid rgba(209, 232, 226, 0.2);
   background: #0f1f1f;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
   transition:
@@ -307,29 +298,25 @@ section h2 {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
-/* Single image projects still stay controlled */
 .project-visuals.single-image img {
-  height: 300px;
+  height: 330px;
 }
 
-/* Three-image projects become a clean row, all equal size */
 .project-visuals.three-images {
-  max-width: 620px;
   grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .project-visuals.three-images img {
-  height: 240px;
+  height: 245px;
 }
 
-/* Reveal animation */
 .reveal-from-right {
   opacity: 0;
-  transform: translateX(120px);
+  transform: translateX(90px);
   transition:
-    opacity 0.85s ease,
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-from-right.visible {
@@ -337,6 +324,29 @@ section h2 {
   transform: translateX(0);
 }
 
+@media (max-width: 1100px) {
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .project-visuals {
+    width: 100%;
+    max-width: 520px;
+    order: -1;
+  }
+
+  .project-visuals img,
+  .project-visuals.single-image img,
+  .project-visuals.three-images img {
+    height: 230px;
+  }
+
+  .project-visuals.three-images {
+    grid-template-columns: 1fr;
+  }
+}
 #resume,
 #contact {
   max-width: 760px;
@@ -416,53 +426,12 @@ footer {
   }
 
   .project-card,
-  .project-row {
-  display: grid;
-  grid-template-columns: minmax(0, 620px) minmax(340px, 520px);
-  gap: 40px;
-  align-items: center;
-  justify-content: space-between;
-  margin: 34px 0 72px;
-}
-
-.project-content {
-  position: relative;
-  z-index: 2;
-  max-width: 640px;
-}
-
-.project-card h3 {
-  color: #f4fbf8;
-  margin: 0 0 14px;
-  font-size: 26px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-}
-
-.project-card p {
-  color: #d3e5df;
-  margin: 0 0 15px;
-}
-
-.project-card strong {
-  color: #ffd6b4;
-}
-
-
-.project-visuals img:hover {
-  transform: translateY(-4px) scale(1.01);
-  filter: brightness(1.08);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
-}
-
-
   #resume,
   #contact {
     padding: 22px;
     border-radius: 22px;
   }
 }
-
 .scroll-progress {
   position: sticky;
   top: 76px;
@@ -483,33 +452,4 @@ footer {
   );
   box-shadow: 0 0 16px rgba(31, 166, 168, 0.75);
   transition: width 0.08s linear;
-}
-
-@media (max-width: 980px) {
-  .project-row {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    margin-bottom: 56px;
-  }
-
-  .project-visuals {
-    max-width: 100%;
-    justify-self: stretch;
-    order: -1;
-  }
-
-  .project-visuals img,
-  .project-visuals.single-image img,
-  .project-visuals.three-images img {
-    height: 230px;
-  }
-
-  .project-visuals.three-images {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .reveal-from-right {
-    transform: translateX(55px);
-  }
 }
