@@ -663,3 +663,23 @@ footer {
   );
   box-shadow: 0 0 16px rgba(91, 46, 255, 0.75);
 }
+
+@media (max-width: 760px) {
+  nav {
+    min-height: 128px;
+  }
+
+  .nav-toggle {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+  }
+
+  .scroll-progress {
+    top: 128px;
+  }
+
+  .scroll-progress.nav-hidden {
+    top: 0;
+  }
+}
