@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  padding-top: 76px;
+  padding-top: 90px;
   margin: 0;
   font-family: Arial, sans-serif;
   color: var(--text);
@@ -47,12 +47,12 @@ nav {
   left: 0;
   width: 100%;
   z-index: 4000;
-  min-height: 76px;
-  display: flex;
-  justify-content: space-between;
+  min-height: 90px;
+  display: grid;
+  grid-template-columns: 1.1fr 2.8fr 1.1fr;
   align-items: center;
-  gap: 18px;
-  padding: 24px max(8%, 24px);
+  gap: 28px;
+  padding: 22px max(7%, 24px);
   background: rgba(8, 8, 18, 0.88);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
@@ -84,8 +84,10 @@ nav.hidden {
 }
 
 .nav-toggle {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  justify-self: end;
 }
 
 .nav-show {
@@ -119,23 +121,29 @@ nav.hidden {
 
 nav h1 {
   margin: 0;
-  font-size: 28px;
-  letter-spacing: -0.04em;
-  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+  justify-self: start;
 }
 
 nav div {
-  display: flex;
-  gap: 18px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
   align-items: center;
+  justify-self: center;
 }
 
 nav a {
   position: relative;
   color: var(--muted);
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  padding: 10px 12px;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -633,7 +641,7 @@ footer {
 
 .scroll-progress {
   position: fixed;
-  top: 75px;
+  top: 89px;
   left: 0;
   z-index: 5000;
   width: 100%;
@@ -665,63 +673,50 @@ footer {
   z-index: 3000;
 }
 
-#navbar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-}
-
-#navbar h1 {
-  justify-self: start;
-}
-
-.nav-links a {
-  flex: 1;
-  text-align: center;
-}
-
-.nav-toggle {
-  justify-self: end;
-}
 
 @media (max-width: 760px) {
-   #navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: space-evenly;
-  }
-
-  #navbar h1 {
-    align-self: flex-start;
-  }
-
-  .nav-toggle {
-    position: absolute;
-    top: 18px;
-    right: 22px;
+  body {
+    padding-top: 138px;
   }
 
   nav {
-    min-height: 128px;
+    min-height: 138px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  nav h1 {
+    font-size: 32px;
+    align-self: flex-start;
+  }
+
+  nav div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 18px;
+    padding: 8px 6px;
   }
 
   .nav-toggle {
     position: absolute;
     top: 18px;
     right: 22px;
+    width: 42px;
+    height: 42px;
   }
 
   .scroll-progress {
-    top: 128px;
+    top: 137px;
   }
 
   .scroll-progress.nav-hidden {
     top: 0;
   }
 }
-
