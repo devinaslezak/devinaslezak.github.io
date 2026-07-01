@@ -1,18 +1,27 @@
 const progressBar = document.querySelector(".scroll-progress-bar");
-
-window.addEventListener("scroll", () => {
-  if (!progressBar) return;
-
-  const scrollTop = window.scrollY;
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / documentHeight) * 100;
-
-  progressBar.style.width = `${scrollPercent}%`;
-});
+const scrollProgress = document.querySelector(".scroll-progress");
 
 const backToTop = document.querySelector(".back-to-top");
 
-window.addEventListener("scroll", () => {
+const navbar = document.querySelector("#navbar");
+const navToggle = document.querySelector("#navToggle");
+const navShow = document.querySelector("#navShow");
+
+function updateScrollProgress() {
+  if (!progressBar) return;
+
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const documentHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const scrollPercent =
+    documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0;
+
+  progressBar.style.width = `${scrollPercent}%`;
+}
+
+function updateBackToTop() {
   if (!backToTop) return;
 
   if (window.scrollY > 500) {
@@ -20,7 +29,15 @@ window.addEventListener("scroll", () => {
   } else {
     backToTop.classList.remove("visible");
   }
+}
+
+window.addEventListener("scroll", () => {
+  updateScrollProgress();
+  updateBackToTop();
 });
+
+window.addEventListener("resize", updateScrollProgress);
+window.addEventListener("load", updateScrollProgress);
 
 if (backToTop) {
   backToTop.addEventListener("click", () => {
@@ -28,6 +45,20 @@ if (backToTop) {
       top: 0,
       behavior: "smooth"
     });
+  });
+}
+
+if (navbar && navToggle && navShow && scrollProgress) {
+  navToggle.addEventListener("click", () => {
+    navbar.classList.add("hidden");
+    navShow.classList.add("visible");
+    scrollProgress.classList.add("nav-hidden");
+  });
+
+  navShow.addEventListener("click", () => {
+    navbar.classList.remove("hidden");
+    navShow.classList.remove("visible");
+    scrollProgress.classList.remove("nav-hidden");
   });
 }
 
