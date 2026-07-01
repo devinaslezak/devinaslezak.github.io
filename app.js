@@ -1,11 +1,8 @@
-const year = document.getElementById("year");
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
-
 const backToTop = document.querySelector(".back-to-top");
 
 window.addEventListener("scroll", () => {
+  if (!backToTop) return;
+
   if (window.scrollY > 500) {
     backToTop.classList.add("visible");
   } else {
