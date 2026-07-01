@@ -221,14 +221,13 @@ section h2 {
 
 .project-card {
   position: relative;
-  background: rgba(22, 44, 44, 0.88);
-  padding: 28px;
-  margin: 22px 0;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  background: rgba(10, 40, 40, 0.78);
+  padding: 34px;
+  border-radius: 28px;
+  border: 1px solid rgba(209, 232, 226, 0.18);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  min-height: 100%;
 }
 
 .project-card::before {
@@ -236,17 +235,11 @@ section h2 {
   position: absolute;
   inset: 0 auto 0 0;
   width: 5px;
-  background: linear-gradient(
-    180deg,
-    var(--accent-light),
-    var(--accent-bright),
-    var(--accent)
-  );
+  background: linear-gradient(180deg, #ffcb9a, #1fa6a8, #116466);
   opacity: 0.95;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
   border-color: rgba(255, 203, 154, 0.38);
   box-shadow: 0 30px 85px rgba(0, 0, 0, 0.42);
 }
@@ -276,47 +269,19 @@ section h2 {
   color: var(--accent);
 }
 
-.project-with-image {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-  gap: 32px;
-  align-items: center;
-}
 
 .project-content {
   position: relative;
   z-index: 2;
 }
 
-.project-image {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid var(--line);
-  background: var(--surface-soft);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-}
-
-.project-image img {
-  display: block;
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 22px;
-  transition: transform 0.35s ease, filter 0.35s ease;
-}
-
-.project-image:hover img {
-  transform: scale(1.04);
-  filter: brightness(1.08);
-}
 
 .reveal-from-right {
   opacity: 0;
-  transform: translateX(90px);
+  transform: translateX(110px);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-from-right.visible {
@@ -403,6 +368,78 @@ footer {
   }
 
   .project-card,
+  .project-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1fr);
+  gap: 42px;
+  align-items: center;
+  margin: 34px 0 72px;
+}
+
+.project-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.project-card h3 {
+  color: #f4fbf8;
+  margin: 0 0 14px;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.project-card p {
+  color: #d3e5df;
+  margin: 0 0 15px;
+}
+
+.project-card strong {
+  color: #ffd6b4;
+}
+
+.project-visuals {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+
+.project-visuals img {
+  width: 100%;
+  height: 250px;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(209, 232, 226, 0.18);
+  background: #0f1f1f;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.project-visuals img:hover {
+  transform: translateY(-4px) scale(1.01);
+  filter: brightness(1.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.single-image img {
+  height: 430px;
+}
+
+.three-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.three-images img {
+  height: 330px;
+}
   #resume,
   #contact {
     padding: 22px;
@@ -432,20 +469,28 @@ footer {
   transition: width 0.08s linear;
 }
 
-@media (max-width: 850px) {
-  .project-with-image {
+@media (max-width: 980px) {
+  .project-row {
     grid-template-columns: 1fr;
+    gap: 22px;
+    margin-bottom: 56px;
   }
 
-  .project-image {
+  .project-visuals {
     order: -1;
   }
 
-  .project-image img {
-    height: 230px;
+  .project-visuals img,
+  .single-image img,
+  .three-images img {
+    height: 240px;
+  }
+
+  .three-images {
+    grid-template-columns: 1fr;
   }
 
   .reveal-from-right {
-    transform: translateX(45px);
+    transform: translateX(50px);
   }
 }
