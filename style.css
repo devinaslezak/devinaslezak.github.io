@@ -84,3 +84,11 @@ footer {
   background: #111827;
   color: white;
 }
+
+.project-card p {
+  margin-bottom: 14px;
+}
+
+.project-card strong {
+  color: #111827;
+}
