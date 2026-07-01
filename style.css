@@ -26,6 +26,7 @@ html {
 }
 
 body {
+  padding-top: 76px;
   margin: 0;
   font-family: Arial, sans-serif;
   color: var(--text);
@@ -41,8 +42,10 @@ a {
 }
 
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   min-height: 76px;
   display: flex;
@@ -83,14 +86,17 @@ nav a::after {
   bottom: -7px;
   width: 100%;
   height: 2px;
-  background: var(--accent-light);
+  background: linear-gradient(90deg, #9B7CFF, #5B2EFF, #0D1B44);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.25s ease;
 }
 
 nav a:hover {
-  color: var(--accent-light);
+  background: linear-gradient(90deg, #9B7CFF, #5B2EFF, #0D1B44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   transform: translateY(-2px);
 }
 
@@ -478,6 +484,10 @@ footer {
 }
 
 @media (max-width: 760px) {
+  body {
+    padding-top: 128px;
+  }
+  
   nav {
     align-items: flex-start;
     flex-direction: column;
@@ -514,8 +524,9 @@ footer {
 }
 
 .scroll-progress {
-  position: sticky;
+  position: fixed;
   top: 76px;
+  left: 0;
   z-index: 99;
   width: 100%;
   height: 4px;
