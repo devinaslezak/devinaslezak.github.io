@@ -169,8 +169,48 @@
 
     <section id="contact">
   <h2>Contact</h2>
-  <p>Email: devinaslezak@gmail.com</p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/devin-slezak">linkedin.com/in/devin-slezak</a></p>
+
+  <p>
+    I’m open to internships, research positions, and engineering opportunities
+    in aerospace, UAV development, manufacturing, propulsion, mechanical design,
+    testing, and electric vehicle systems.
+  </p>
+
+  <p>
+    Email is the best way to reach me, but feel free to connect with me on
+    LinkedIn as well.
+  </p>
+
+  <div class="contact-items">
+    <a href="mailto:devinaslezak@gmail.com" class="contact-item">
+      <span class="contact-label">Email</span>
+      <span class="contact-value">devinaslezak@gmail.com</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/devin-slezak" target="_blank" rel="noopener" class="contact-item">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value">linkedin.com/in/devin-slezak</span>
+    </a>
+  </div>
+
+  <form class="contact-form" action="mailto:devinaslezak@gmail.com" method="post" enctype="text/plain">
+    <label class="field">
+      <span>Name</span>
+      <input type="text" name="name" required>
+    </label>
+
+    <label class="field">
+      <span>Email</span>
+      <input type="email" name="email" required>
+    </label>
+
+    <label class="field">
+      <span>Message</span>
+      <textarea name="message" rows="4" required></textarea>
+    </label>
+
+    <button type="submit" class="button">Send Message</button>
+  </form>
 </section>
   </main>
 
