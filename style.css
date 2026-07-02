@@ -818,25 +818,15 @@ footer {
   filter: brightness(1.15);
 }
 
-.image-expand-card {
-  width: 100%;
-}
 
-.image-hover-wrap {
+.image-expand-card {
   position: relative;
   overflow: hidden;
   border-radius: 18px;
-}
-
-.image-hover-wrap img {
   width: 100%;
-  display: block;
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
 }
 
-.image-hover-wrap::after {
+.image-expand-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -851,16 +841,16 @@ footer {
   pointer-events: none;
 }
 
-.image-hover-wrap:hover img {
+.image-expand-card:hover img {
   filter: blur(4px) brightness(0.7);
   transform: scale(1.05);
 }
 
-.image-hover-wrap:hover::after {
+.image-expand-card:hover::after {
   opacity: 1;
 }
 
-.image-hover-wrap:hover .expand-image-btn {
+.image-expand-card:hover .expand-image-btn {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%);
