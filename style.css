@@ -786,29 +786,7 @@ footer {
     filter 0.3s ease;
 }
 
-.image-expand-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(155, 124, 255, 0.55),
-    rgba(91, 46, 255, 0.45),
-    rgba(13, 27, 68, 0.65)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
 
-.image-expand-card:hover img {
-  filter: blur(4px) brightness(0.7);
-  transform: scale(1.05);
-}
-
-.image-expand-card:hover::after {
-  opacity: 1;
-}
 
 .expand-image-btn {
   position: absolute;
@@ -835,19 +813,55 @@ footer {
     filter 0.25s ease;
 }
 
-.image-expand-card:hover .expand-image-btn {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, -50%);
-}
 
 .expand-image-btn:hover {
   filter: brightness(1.15);
 }
 
 .image-expand-card {
+  width: 100%;
+}
+
+.image-hover-wrap {
   position: relative;
   overflow: hidden;
   border-radius: 18px;
+}
+
+.image-hover-wrap img {
   width: 100%;
+  display: block;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.image-hover-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 124, 255, 0.55),
+    rgba(91, 46, 255, 0.45),
+    rgba(13, 27, 68, 0.65)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.image-hover-wrap:hover img {
+  filter: blur(4px) brightness(0.7);
+  transform: scale(1.05);
+}
+
+.image-hover-wrap:hover::after {
+  opacity: 1;
+}
+
+.image-hover-wrap:hover .expand-image-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
 }
