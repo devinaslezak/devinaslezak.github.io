@@ -132,7 +132,7 @@ expandButtons.forEach(function (button) {
   button.addEventListener("click", function (event) {
     event.stopPropagation();
 
-    const card = button.closest(".image-hover-wrap");
+    const card = button.closest(".image-expand-card");
 const image = card.querySelector("img");
 
     openLightbox(image);
