@@ -109,31 +109,16 @@ const lightboxImage = document.querySelector("#lightboxImage");
 const lightboxClose = document.querySelector("#lightboxClose");
 
 const expandButtons = document.querySelectorAll(".expand-image-btn");
+const clickableImages = document.querySelectorAll(".image-expand-card img");
 
-expandButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    const card = button.closest(".image-expand-card");
-    const image = card.querySelector("img");
+function openLightbox(image) {
+  if (!lightbox || !lightboxImage || !image) return;
 
-    if (!lightbox || !lightboxImage || !image) return;
-
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-    lightbox.classList.add("visible");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-clickableImages.forEach(function (image) {
-  image.addEventListener("click", function () {
-    if (!lightbox || !lightboxImage) return;
-
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-    lightbox.classList.add("visible");
-    document.body.style.overflow = "hidden";
-  });
-});
+  lightboxImage.src = image.src;
+  lightboxImage.alt = image.alt;
+  lightbox.classList.add("visible");
+  document.body.style.overflow = "hidden";
+}
 
 function closeLightbox() {
   if (!lightbox || !lightboxImage) return;
@@ -143,8 +128,28 @@ function closeLightbox() {
   document.body.style.overflow = "";
 }
 
+expandButtons.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    event.stopPropagation();
+
+    const card = button.closest(".image-expand-card");
+    const image = card.querySelector("img");
+
+    openLightbox(image);
+  });
+});
+
+clickableImages.forEach(function (image) {
+  image.addEventListener("click", function () {
+    openLightbox(image);
+  });
+});
+
 if (lightboxClose) {
-  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxClose.addEventListener("click", function (event) {
+    event.stopPropagation();
+    closeLightbox();
+  });
 }
 
 if (lightbox) {
