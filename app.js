@@ -130,11 +130,13 @@ function closeLightbox() {
 
 expandButtons.forEach(function (button) {
   button.addEventListener("click", function (event) {
+    event.preventDefault();
     event.stopPropagation();
 
     const card = button.closest(".image-expand-card");
-const image = card.querySelector("img");
+    if (!card) return;
 
+    const image = card.querySelector("img");
     openLightbox(image);
   });
 });
@@ -147,6 +149,7 @@ clickableImages.forEach(function (image) {
 
 if (lightboxClose) {
   lightboxClose.addEventListener("click", function (event) {
+    event.preventDefault();
     event.stopPropagation();
     closeLightbox();
   });
