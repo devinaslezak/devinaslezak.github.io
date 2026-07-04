@@ -194,7 +194,7 @@ nav a:hover::after {
 }
 
 .intro-text::before {
-  content: "AEROSPACE ENGINEERING · MANUFACTURING · UAVS";
+  content: "MECHANICAL DESIGN · MANUFACTURING · TESTING";
   display: inline-flex;
   width: fit-content;
   padding: 8px 12px;
