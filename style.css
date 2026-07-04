@@ -117,10 +117,17 @@ nav.hidden {
 
 .nav-toggle,
 .nav-show {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 9000;
+  width: 44px;
+  height: 44px;
   border: 1px solid rgba(155, 124, 255, 0.55);
   border-radius: 999px;
   background: linear-gradient(135deg, #9B7CFF, #5B2EFF, #0D1B44);
   color: #ffffff;
+  font-size: 20px;
   font-weight: 900;
   cursor: pointer;
   box-shadow:
@@ -128,6 +135,7 @@ nav.hidden {
     0 0 34px rgba(91, 46, 255, 0.3),
     0 18px 45px rgba(0, 0, 0, 0.45);
   transition:
+    opacity 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease,
     filter 0.2s ease;
