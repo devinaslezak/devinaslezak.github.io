@@ -55,7 +55,7 @@ body::before {
     linear-gradient(rgba(155, 124, 255, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(155, 124, 255, 0.055) 1px, transparent 1px);
   background-size: 44px 44px;
-  animation: gridDrift 15s linear infinite;
+  animation: gridDrift 4s linear infinite;
   mask-image: linear-gradient(to bottom, black, transparent 85%);
   pointer-events: none;
 }
