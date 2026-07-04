@@ -864,3 +864,20 @@ footer {
   font-weight: 900;
   letter-spacing: 0.12em;
 }
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.skill-tags span {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(91, 46, 255, 0.16);
+  border: 1px solid rgba(155, 124, 255, 0.28);
+  color: #DCD6FF;
+  font-size: 13px;
+  font-weight: 800;
+}
