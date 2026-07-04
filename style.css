@@ -46,10 +46,10 @@ content: "";
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(rgba(155, 124, 255, 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155, 124, 255, 0.11) 1px, transparent 1px),
-    linear-gradient(rgba(155, 124, 255, 0.055) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(155, 124, 255, 0.055) 2px, transparent 2px),
+    linear-gradient(rgba(155, 124, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 124, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(155, 124, 255, 0.08) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(155, 124, 255, 0.08) 2px, transparent 2px),
     radial-gradient(circle at 25% 20%, rgba(91, 46, 255, 0.28), transparent 32%),
     radial-gradient(circle at 80% 70%, rgba(13, 27, 68, 0.42), transparent 35%);
   background-size:
