@@ -1,5 +1,51 @@
 console.log("app.js is running");
-
+if (window.particlesJS) {
+  particlesJS("particles-js", {
+    particles: {
+      number: {
+        value: 42,
+        density: {
+          enable: true,
+          value_area: 900
+        }
+      },
+      color: {
+        value: "#9B7CFF"
+      },
+      shape: {
+        type: "circle"
+      },
+      opacity: {
+        value: 0.28,
+        random: true
+      },
+      size: {
+        value: 2.2,
+        random: true
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#5B2EFF",
+        opacity: 0.18,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 0.45,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "out",
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: {
+          enable: true,
+         
 const progressBar = document.querySelector(".scroll-progress-bar");
 const scrollProgress = document.querySelector(".scroll-progress");
 
