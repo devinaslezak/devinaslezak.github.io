@@ -31,25 +31,36 @@ body {
   font-family: Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
+  background: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
   background:
-    radial-gradient(circle at 20% 20%, rgba(91, 46, 255, 0.35), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(13, 27, 68, 0.55), transparent 30%),
-    radial-gradient(circle at 50% 80%, rgba(155, 124, 255, 0.18), transparent 32%),
-    var(--bg);
-  background-size: 140% 140%;
-  animation: backgroundDrift 22s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 25%, rgba(91, 46, 255, 0.42), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(13, 27, 68, 0.75), transparent 30%),
+    radial-gradient(circle at 45% 80%, rgba(155, 124, 255, 0.26), transparent 32%);
+  background-size: 130% 130%;
+  animation: backgroundDrift 18s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 @keyframes backgroundDrift {
   0% {
-    background-position: 0% 0%;
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    filter: hue-rotate(0deg);
   }
 
   100% {
-    background-position: 100% 80%;
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+    filter: hue-rotate(10deg);
   }
 }
-
 a {
   color: inherit;
 }
@@ -942,16 +953,10 @@ section::after {
   display: none;
 }
 
-#particles-js {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: transparent;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: reduce) {
-  body {
+  body,
+  body::before {
     animation: none !important;
   }
 }
