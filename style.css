@@ -383,9 +383,9 @@ section h2 {
   display: grid;
   grid-template-columns: minmax(360px, 520px) minmax(360px, 520px);
   gap: 48px;
-  align-items: center;
-  justify-content: space-between;
-  margin: 36px 0 90px;
+  align-items: stretch;
+  justify-content: center;
+  margin: 36px auto 90px;
 }
 
 .project-card {
@@ -426,11 +426,12 @@ section h2 {
 }
 
 .project-visuals {
-  width: 520px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 520px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  justify-self: stretch;
 }
 
 .project-visuals img {
@@ -509,9 +510,12 @@ section h2 {
     grid-template-columns: 1fr;
   }
 }
+
 #resume,
 #contact {
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 30px;
   background: rgba(17, 17, 31, 0.9);
   border: 1px solid var(--line);
