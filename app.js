@@ -1,52 +1,7 @@
 document.documentElement.classList.add("js");
+
 console.log("app.js is running");
-if (window.particlesJS) {
-  particlesJS("particles-js", {
-    particles: {
-      number: {
-        value: 42,
-        density: {
-          enable: true,
-          value_area: 900
-        }
-      },
-      color: {
-        value: "#9B7CFF"
-      },
-      shape: {
-        type: "circle"
-      },
-      opacity: {
-        value: 0.28,
-        random: true
-      },
-      size: {
-        value: 2.2,
-        random: true
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#5B2EFF",
-        opacity: 0.18,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 0.45,
-        direction: "none",
-        random: true,
-        straight: false,
-        out_mode: "out",
-        bounce: false
-      }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: {
-          enable: true,
-         
+
 const progressBar = document.querySelector(".scroll-progress-bar");
 const scrollProgress = document.querySelector(".scroll-progress");
 
@@ -105,15 +60,28 @@ if (navToggle && navbar && navShow && scrollProgress) {
     navShow.classList.add("visible");
     scrollProgress.classList.add("nav-hidden");
   });
+} else {
+  console.warn("Nav hide elements missing", {
+    navToggle,
+    navbar,
+    navShow,
+    scrollProgress
+  });
 }
 
-if (navShow && navbar && navToggle && scrollProgress) {
+if (navShow && navbar && scrollProgress) {
   navShow.addEventListener("click", function () {
     console.log("show nav clicked");
 
     navbar.classList.remove("hidden");
     navShow.classList.remove("visible");
     scrollProgress.classList.remove("nav-hidden");
+  });
+} else {
+  console.warn("Nav show elements missing", {
+    navShow,
+    navbar,
+    scrollProgress
   });
 }
 
@@ -147,9 +115,6 @@ if (revealItems.length > 0) {
     revealObserver.observe(item);
   });
 }
-
-updateScrollProgress();
-updateBackToTop();
 
 const lightbox = document.querySelector("#imageLightbox");
 const lightboxImage = document.querySelector("#lightboxImage");
@@ -215,3 +180,6 @@ document.addEventListener("keydown", function (event) {
     closeLightbox();
   }
 });
+
+updateScrollProgress();
+updateBackToTop();
