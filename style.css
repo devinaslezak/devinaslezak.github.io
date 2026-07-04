@@ -855,3 +855,12 @@ footer {
   pointer-events: auto;
   transform: translate(-50%, -50%);
 }
+
+.project-number {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--accent-light);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
