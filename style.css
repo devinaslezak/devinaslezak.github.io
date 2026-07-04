@@ -769,13 +769,13 @@ footer {
     padding: 8px 6px;
   }
 
-  .nav-toggle {
-    position: absolute;
-    top: 18px;
-    right: 22px;
-    width: 42px;
-    height: 42px;
-  }
+ .nav-toggle,
+.nav-show {
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+}
 
   .scroll-progress {
     top: 137px;
