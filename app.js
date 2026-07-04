@@ -1,3 +1,4 @@
+document.documentElement.classList.add("js");
 console.log("app.js is running");
 if (window.particlesJS) {
   particlesJS("particles-js", {
