@@ -380,12 +380,21 @@ section h2 {
 }
 
 .project-row {
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(360px, 520px) minmax(360px, 520px);
+  grid-template-columns: 520px 520px;
   gap: 48px;
-  align-items: stretch;
+  align-items: start;
   justify-content: center;
   margin: 36px auto 90px;
+}
+
+.project-card,
+.project-visuals {
+  width: 100%;
+  max-width: 520px;
+  justify-self: stretch;
+  align-self: start;
 }
 
 .project-card {
@@ -426,12 +435,9 @@ section h2 {
 }
 
 .project-visuals {
-  width: 100%;
-  max-width: 520px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  justify-self: stretch;
 }
 
 .project-visuals img {
@@ -457,7 +463,7 @@ section h2 {
 }
 
 .project-visuals.single-image {
-  height: 330px;
+  height: auto;
 }
 
 .project-visuals.three-images {
@@ -514,8 +520,7 @@ section h2 {
 #resume,
 #contact {
   max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 30px;
   background: rgba(17, 17, 31, 0.9);
   border: 1px solid var(--line);
