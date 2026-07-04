@@ -480,8 +480,23 @@ section h2 {
   gap: 12px;
 }
 
+.project-visuals.three-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.project-visuals.three-images .image-expand-card:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/9;
+}
+
+.project-visuals.three-images .image-expand-card:not(:first-child) {
+  aspect-ratio: 1 / 1;
+}
+
 .project-visuals.three-images img {
-  height: 245px;
+  height: 100%;
 }
 
 .reveal-from-right {
