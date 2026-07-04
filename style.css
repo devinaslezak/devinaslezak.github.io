@@ -941,3 +941,11 @@ section::after {
 #contact::after {
   display: none;
 }
+
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: transparent;
+  pointer-events: none;
+}
