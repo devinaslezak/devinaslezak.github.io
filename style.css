@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  padding-top: 90px;
+  padding-top: 74px;
   margin: 0;
   font-family: Arial, sans-serif;
   color: var(--text);
@@ -92,17 +92,17 @@ a {
 }
 
 nav {
-  position: fixed;
+ position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 4000;
-  min-height: 90px;
+  min-height: 74px;
   display: grid;
-  grid-template-columns: 0.9fr 3.6fr 0.9fr;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 28px;
-  padding: 22px max(7%, 24px);
+  gap: 18px;
+  padding: 14px max(4%, 18px);
   background: rgba(8, 8, 18, 0.88);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
@@ -171,17 +171,18 @@ nav.hidden {
 
 nav h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: clamp(22px, 2vw, 30px);
   letter-spacing: -0.05em;
   font-weight: 900;
   justify-self: start;
+  white-space: nowrap;
 }
 
 nav div {
-  width: 100%;
+ width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 52px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
   align-items: center;
   justify-self: center;
 }
@@ -190,11 +191,14 @@ nav a {
   position: relative;
   color: var(--muted);
   text-decoration: none;
-  font-size: 20px;
+  font-size: clamp(12px, 1vw, 16px);
   font-weight: 900;
   text-align: center;
-  padding: 14px 18px;
+  padding: 9px 6px;
   border-radius: 999px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition:
     color 0.2s ease,
     transform 0.2s ease,
@@ -1128,55 +1132,11 @@ footer {
     0 22px 55px rgba(0, 0, 0, 0.55);
 }
 
-@media (max-width: 760px) {
-  body {
-    padding-top: 128px;
-  }
-  
-  nav {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
 
-  nav div {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .intro {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding-top: 62px;
-  }
-
-  .intro-image img {
-  max-width: 100%;
-  height: 240px;
-}
-  .intro h2 {
-    font-size: 44px;
-  }
-
-  .intro p {
-    font-size: 18px;
-  }
-
-  main {
-    padding-top: 10px;
-  }
-
-  .project-card,
-  #resume,
-  #contact {
-    padding: 22px;
-    border-radius: 22px;
-  }
-}
 
 .scroll-progress {
   position: fixed;
-  top: 89px;
+  top: 73px;
   left: 0;
   z-index: 8500;
   width: 100%;
@@ -1209,52 +1169,6 @@ footer {
 }
 
 
-@media (max-width: 760px) {
-  body {
-    padding-top: 138px;
-  }
-
-  nav {
-    min-height: 138px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-  }
-
-  nav h1 {
-    font-size: 32px;
-    align-self: flex-start;
-  }
-
-  nav div {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 20px;
-    padding: 8px 6px;
-  }
-
- .nav-toggle,
-.nav-show {
-  top: 18px;
-  right: 22px;
-  width: 42px;
-  height: 42px;
-}
-
-  .scroll-progress {
-    top: 137px;
-  }
-
-  .scroll-progress.nav-hidden {
-    top: 0;
-  }
-}
 
 .project-visuals img {
   cursor: zoom-in;
@@ -1541,5 +1455,87 @@ section::after {
 
   .project-visuals.three-images {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-top: 118px;
+  }
+
+  nav {
+    min-height: 118px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  nav h1 {
+    font-size: 28px;
+    align-self: flex-start;
+  }
+
+  nav div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 7px 6px;
+  }
+
+  .nav-toggle,
+  .nav-show {
+    top: 18px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .scroll-progress {
+    top: 117px;
+  }
+
+  .scroll-progress.nav-hidden {
+    top: 0;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 62px;
+  }
+
+  .intro-image img {
+    max-width: 100%;
+    height: 240px;
+  }
+
+  .intro h2 {
+    font-size: 44px;
+  }
+
+  .intro p {
+    font-size: 18px;
+  }
+
+  main {
+    padding-top: 10px;
+  }
+
+  .project-card,
+  #resume,
+  #contact,
+  #about,
+  #skills,
+  #experience,
+  #education {
+    padding: 22px;
+    border-radius: 22px;
   }
 }
