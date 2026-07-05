@@ -829,6 +829,67 @@ section h2 {
   font-size: 15px;
 }
 
+/* Coursework list inside Education */
+
+.coursework-block {
+  margin-top: 26px;
+}
+
+.coursework-block h4 {
+  margin: 0 0 18px;
+  color: #F7F5FF;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.coursework-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.coursework-group {
+  padding: 18px;
+  background: rgba(8, 8, 18, 0.58);
+  border: 1px solid rgba(232, 230, 243, 0.14);
+  border-radius: 18px;
+}
+
+.coursework-group h5 {
+  margin: 0 0 10px;
+  color: var(--accent-light);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.coursework-group ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #D8D3EC;
+}
+
+.coursework-group li {
+  margin-bottom: 7px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.coursework-group li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  .coursework-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coursework-group {
+    padding: 16px;
+  }
+}
 /* Make new tags match project tags exactly */
 
 .tag-list,
