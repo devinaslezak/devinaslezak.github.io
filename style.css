@@ -519,19 +519,22 @@ section h2 {
 
 
 /* ================================
-   INTEGRATED ABOUT / SKILLS / EXPERIENCE / EDUCATION STYLES
-   Matches current hero + project-card aesthetic
+   ABOUT / SKILLS / EXPERIENCE / EDUCATION
+   Matched to Projects, Resume, and Contact
 ================================ */
 
 #about,
 #skills,
 #experience,
 #education {
-  width: 100%;
   max-width: 1180px;
   margin: 0 auto 76px;
+  padding: 30px;
+  background: rgba(17, 17, 31, 0.9);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
-
 #about > h2,
 #skills > h2,
 #experience > h2,
@@ -568,29 +571,33 @@ section h2 {
   content: "Education";
 }
 
+/* About layout */
 
-/* Shared card styling matching .project-card */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.75fr);
+  gap: 48px;
+  align-items: start;
+  justify-content: center;
+  margin: 36px auto 0;
+}
 
-.about-card,
-.skill-card,
-.experience-card,
-.education-card {
+.about-card {
   position: relative;
-  background: rgba(17, 17, 31, 0.88);
-  border: 1px solid rgba(232, 230, 243, 0.18);
+  width: 100%;
+  background: rgba(10, 10, 22, 0.76);
+  padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
+  border: 1px solid var(--line);
+  box-shadow: none;
   overflow: hidden;
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.25s ease;
 }
 
-.about-card::before,
-.skill-card::before,
-.experience-card::before,
-.education-card::before {
+.about-card::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
@@ -598,54 +605,32 @@ section h2 {
   background: linear-gradient(180deg, #9B7CFF, #5B2EFF, #0D1B44);
 }
 
-.about-card:hover,
-.skill-card:hover,
-.experience-card:hover,
-.education-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(155, 124, 255, 0.42);
-  box-shadow:
-    0 0 28px rgba(155, 124, 255, 0.12),
-    0 30px 80px rgba(0, 0, 0, 0.55);
+.about-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(155, 124, 255, 0.45);
+  background: rgba(46, 26, 120, 0.22);
+  box-shadow: none;
 }
 
-
-/* About */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.75fr);
-  gap: 28px;
-  align-items: stretch;
-}
-
-.about-card {
-  padding: 30px;
-}
-
-.about-main p {
-  margin: 0 0 16px;
+.about-card p {
   color: #D8D3EC;
-  font-size: 16px;
-  line-height: 1.7;
+  margin: 0 0 14px;
+  font-size: 15px;
 }
 
-.about-main p:last-child {
+.about-card p:last-child {
   margin-bottom: 0;
 }
 
-.about-facts {
-  display: grid;
-  gap: 16px;
-}
-
 .fact-row {
-  padding: 0 0 15px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
   border-bottom: 1px solid rgba(232, 230, 243, 0.13);
 }
 
 .fact-row:last-child {
   padding-bottom: 0;
+  margin-bottom: 0;
   border-bottom: none;
 }
 
@@ -655,7 +640,7 @@ section h2 {
   color: var(--accent-light);
   font-size: 13px;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -663,72 +648,106 @@ section h2 {
   display: block;
   color: #F7F5FF;
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-
-/* Skills */
+/* Skills layout */
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  gap: 48px;
+  align-items: start;
+  justify-content: center;
+  margin: 36px auto 0;
 }
 
 .skill-card {
+  position: relative;
+  width: 100%;
+  background: rgba(10, 10, 22, 0.76);
   padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: none;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #9B7CFF, #5B2EFF, #0D1B44);
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(155, 124, 255, 0.45);
+  background: rgba(46, 26, 120, 0.22);
+  box-shadow: none;
 }
 
 .skill-card h3 {
-  margin: 0 0 12px;
   color: #F7F5FF;
+  margin: 0 0 12px;
   font-size: 24px;
   line-height: 1.15;
   letter-spacing: -0.03em;
 }
 
 .skill-card p {
-  margin: 0;
   color: #D8D3EC;
+  margin: 0 0 14px;
   font-size: 15px;
-  line-height: 1.65;
 }
 
-
-/* Reuse project tag styling for all new tags */
-
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.tag-list span {
-  padding: 7px 11px;
-  border-radius: 999px;
-  background: rgba(91, 46, 255, 0.16);
-  border: 1px solid rgba(155, 124, 255, 0.28);
-  color: #DCD6FF;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-
-/* Experience */
+/* Experience layout */
 
 .experience-list {
   display: grid;
-  gap: 28px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+  margin: 36px auto 0;
 }
 
 .experience-card {
+  position: relative;
+  width: 100%;
+  background: rgba(10, 10, 22, 0.76);
   padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: none;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #9B7CFF, #5B2EFF, #0D1B44);
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(155, 124, 255, 0.45);
+  background: rgba(46, 26, 120, 0.22);
+  box-shadow: none;
 }
 
 .experience-content h3 {
-  margin: 0 0 8px;
   color: #F7F5FF;
+  margin: 0 0 8px;
   font-size: 24px;
   line-height: 1.15;
   letter-spacing: -0.03em;
@@ -750,23 +769,48 @@ section h2 {
 .experience-content li {
   margin-bottom: 10px;
   font-size: 15px;
-  line-height: 1.65;
 }
 
 .experience-content li:last-child {
   margin-bottom: 0;
 }
 
-
-/* Education */
+/* Education layout */
 
 .education-card {
+  position: relative;
+  width: 100%;
+  background: rgba(10, 10, 22, 0.76);
   padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: none;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+  margin-top: 24px;
+}
+
+.education-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #9B7CFF, #5B2EFF, #0D1B44);
+}
+
+.education-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(155, 124, 255, 0.45);
+  background: rgba(46, 26, 120, 0.22);
+  box-shadow: none;
 }
 
 .education-card h3 {
-  margin: 0 0 8px;
   color: #F7F5FF;
+  margin: 0 0 8px;
   font-size: 24px;
   line-height: 1.15;
   letter-spacing: -0.03em;
@@ -780,20 +824,46 @@ section h2 {
 }
 
 .education-card p {
-  margin: 0;
-  max-width: 800px;
   color: #D8D3EC;
+  margin: 0 0 14px;
   font-size: 15px;
-  line-height: 1.65;
 }
 
+/* Make new tags match project tags exactly */
+
+.tag-list,
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tag-list span,
+.skill-tags span {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(91, 46, 255, 0.16);
+  border: 1px solid rgba(155, 124, 255, 0.28);
+  color: #DCD6FF;
+  font-size: 13px;
+  font-weight: 800;
+}
 
 /* Mobile */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  #about,
+  #skills,
+  #experience,
+  #education {
+    max-width: 560px;
+  }
+
   .about-grid,
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
@@ -802,7 +872,8 @@ section h2 {
   #skills,
   #experience,
   #education {
-    max-width: 560px;
+    padding: 22px;
+    border-radius: 22px;
   }
 
   .about-card,
@@ -810,13 +881,7 @@ section h2 {
   .experience-card,
   .education-card {
     padding: 22px;
-    border-radius: 22px;
-  }
-
-  .skill-card h3,
-  .experience-content h3,
-  .education-card h3 {
-    font-size: 22px;
+    border-radius: 18px;
   }
 }
 
