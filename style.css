@@ -503,6 +503,15 @@ section h2 {
   height: 100%;
 }
 
+.project-row-text-only {
+  grid-template-columns: minmax(0, 720px);
+}
+
+.project-row-text-only .project-card {
+  max-width: 720px;
+  justify-self: center;
+}
+
 .reveal-from-right {
   opacity: 1;
   transform: translateX(0);
